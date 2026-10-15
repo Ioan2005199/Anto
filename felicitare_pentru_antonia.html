@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pentru sufletul meu • Antonia</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(145deg, #fbf6f3 0%, #fdf0f2 50%, #fbf5f7 100%);
+      color: #382d31;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .font-cormorant {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* Ambient Warm Rose & Gold Glow */
+    .ambient-glow {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 580px;
+      height: 580px;
+      background: radial-gradient(circle, rgba(251, 207, 216, 0.45) 0%, rgba(254, 243, 199, 0.28) 42%, transparent 70%);
+      filter: blur(65px);
+      pointer-events: none;
+      z-index: 0;
+      animation: warmBreathe 9s ease-in-out infinite alternate;
+    }
+
+    @keyframes warmBreathe {
+      0% { opacity: 0.65; transform: translate(-50%, -50%) scale(0.96); }
+      100% { opacity: 0.95; transform: translate(-50%, -50%) scale(1.06); }
+    }
+
+    /* Ivory Parchment Card Styling */
+    .card-parchment {
+      background: #fffdfb;
+      border: 1px solid rgba(226, 175, 185, 0.45);
+      box-shadow: 0 25px 60px -12px rgba(186, 137, 149, 0.18), 
+                  0 8px 24px -4px rgba(217, 119, 6, 0.06),
+                  inset 0 0 0 1px rgba(255, 255, 255, 0.85);
+    }
+
+    /* Wax Seal Button */
+    .wax-seal {
+      background: radial-gradient(circle at 35% 35%, #d97585 0%, #be4e62 65%, #9e3649 100%);
+      box-shadow: 0 10px 25px -4px rgba(190, 78, 98, 0.45),
+                  inset 0 2px 4px rgba(255, 255, 255, 0.35),
+                  inset 0 -3px 6px rgba(0, 0, 0, 0.25);
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .wax-seal:hover {
+      transform: scale(1.06) rotate(2deg);
+      box-shadow: 0 14px 30px -4px rgba(190, 78, 98, 0.55),
+                  inset 0 2px 5px rgba(255, 255, 255, 0.45);
+    }
+
+    /* Floating Musical & Petal Particles */
+    .floating-particle {
+      position: absolute;
+      pointer-events: none;
+      color: #be4e62;
+      font-size: 1.35rem;
+      user-select: none;
+      z-index: 50;
+      animation: floatSoftly 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes floatSoftly {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.65) rotate(0deg);
+      }
+      25% {
+        opacity: 0.95;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-85px) scale(1.2) rotate(16deg);
+      }
+    }
+
+    /* Piano tactile chord buttons */
+    .piano-chord-btn {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      background: linear-gradient(180deg, #ffffff 0%, #fff7f8 100%);
+    }
+    .piano-chord-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(190, 78, 98, 0.4);
+      box-shadow: 0 10px 20px -6px rgba(217, 119, 6, 0.12), 0 4px 12px -2px rgba(190, 78, 98, 0.08);
+    }
+    .piano-chord-btn:active {
+      transform: translateY(1px) scale(0.97);
+    }
+
+    /* Custom Checkbox Aesthetics */
+    .custom-checkbox {
+      accent-color: #be4e62;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center p-4 sm:p-6 md:p-8 relative selection:bg-rose-200/60">
+
+  <!-- Ambient Background Light -->
+  <div class="ambient-glow"></div>
+
+  <!-- Main Viewport Container -->
+  <main class="w-full max-w-xl mx-auto relative z-10 my-4">
+
+    <!-- 1. ENVELOPE / SEALED COVER -->
+    <section id="sealed-screen" class="flex flex-col items-center justify-center min-h-[500px] text-center p-8 sm:p-12 rounded-3xl card-parchment cursor-pointer transition-all duration-500 hover:border-rose-300" onclick="openLetter()">
+      
+      <!-- Wax Seal Stamp -->
+      <div class="relative group my-7">
+        <div class="absolute -inset-3 bg-rose-300/30 rounded-full blur-lg group-hover:bg-rose-400/40 transition duration-500"></div>
+        <div class="relative w-24 h-24 rounded-full wax-seal flex items-center justify-center border border-rose-200/40">
+          <!-- Clef & Heart Stylized SVG -->
+          <svg class="w-10 h-10 text-rose-50 drop-shadow-md" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </div>
+      </div>
+
+      <span class="text-rose-700/80 uppercase tracking-[0.22em] text-xs font-semibold mb-2">Un gând cald pentru tine</span>
+      <h1 class="font-cormorant text-3xl sm:text-4xl text-stone-900 font-semibold leading-snug">
+        Pentru sufletul meu,<br>
+        <span class="italic text-rose-800/85 font-normal">Antonia</span>
+      </h1>
+
+      <p class="mt-4 text-stone-600 text-sm max-w-xs leading-relaxed font-light">
+        Atinge sigiliul pentru a deschide biletul și a lăsa tot greul zilei în urmă.
+      </p>
+
+      <div class="mt-8 inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-rose-50 border border-rose-200 text-rose-800 text-xs font-medium tracking-wider uppercase shadow-sm group-hover:bg-rose-100/70 transition">
+        <span>Deschide scrisoarea</span>
+        <svg class="w-4 h-4 text-rose-600 animate-pulse" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 2. OPENED CARD CONTENT -->
+    <article id="letter-content" class="hidden opacity-0 card-parchment rounded-3xl p-6 sm:p-9 transition-all duration-700 ease-out">
+      
+      <!-- Card Header -->
+      <header class="border-b border-rose-100 pb-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div>
+          <span class="text-[11px] uppercase tracking-[0.2em] text-rose-700/80 font-semibold">Refugiul nostru de seară</span>
+          <h2 class="font-cormorant text-3xl text-stone-900 mt-0.5 font-bold tracking-wide">Pentru sufletul meu</h2>
+        </div>
+        <div class="text-rose-800/80 font-cormorant italic text-sm border border-rose-200/80 px-3.5 py-1 rounded-full bg-rose-50/70">
+          Aproape de tine, mereu
+        </div>
+      </header>
+
+      <!-- Main Dedicated Message -->
+      <section class="my-6 space-y-4 font-normal text-stone-700 leading-relaxed text-[15px] sm:text-base">
+        <p class="first-letter:font-cormorant first-letter:text-3xl first-letter:font-semibold first-letter:text-rose-800 first-letter:mr-0.5">
+          Știu că ai avut o zi lungă, de la 11 la 19, De aceea sunt aici langa tine, sa te ascult, sa te admir, sa te iubesc. In seara asta vreau sa ne relaxam, amadoi muncim mult, esti un om deosebit de care sunt mai mandru pe zi ce trece, ti am dus dorul tare azi, acum ne putem simti bine si usurati amandoi insfarsit.
+        </p>
+        
+        <!-- Safe Travels Banner -->
+        <div class="my-5 p-4 rounded-2xl bg-gradient-to-r from-rose-100/70 via-rose-50/90 to-amber-50/70 border border-rose-200/80 shadow-sm flex items-start gap-3.5">
+          <div class="p-2 rounded-xl bg-white/80 text-rose-700 shadow-xs shrink-0 mt-0.5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-cormorant text-lg sm:text-xl font-bold text-rose-900 leading-snug">
+              Drum bun, iubirea mea frumoasă! Totul o să fie bine.
+            </p>
+            <p class="text-xs sm:text-[13px] text-stone-600 mt-1 font-light">
+              Sunt cu gândul la tine la fiecare kilometru. Mergi cu grijă și liniște în suflet.
+            </p>
+          </div>
+        </div>
+
+        <!-- Intimate Sign-off Quote -->
+        <div class="mt-4 pt-3 pb-2 border-l-2 border-rose-400 pl-4 bg-rose-50/40 rounded-r-xl">
+          <p class="font-cormorant italic text-xl sm:text-2xl text-rose-900 font-semibold leading-snug">
+            „Bebe meu mic si muncitor, te iubesc cel mai mult.”
+          </p>
+        </div>
+      </section>
+
+      <!-- Evening Plan Checklist -->
+      <section class="my-6 bg-gradient-to-b from-[#fffafb] to-[#fff6f7] border border-rose-100/90 rounded-2xl p-5 sm:p-6 shadow-[0_4px_16px_rgba(244,114,182,0.04)]">
+        <div class="flex items-center gap-2 mb-3.5">
+          <svg class="w-5 h-5 text-rose-700" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <h3 class="font-cormorant text-xl text-stone-900 font-semibold tracking-wide">Planul nostru de seară</h3>
+        </div>
+
+        <div class="space-y-3 text-xs sm:text-sm text-stone-700">
+          <label class="flex items-center gap-3 cursor-pointer select-none">
+            <input type="checkbox" checked class="custom-checkbox w-4 h-4 rounded">
+            <span>Relaxare împreună ✨</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer select-none">
+            <input type="checkbox" checked class="custom-checkbox w-4 h-4 rounded">
+            <span>Timp împreună 🤍</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer select-none">
+            <input type="checkbox" checked class="custom-checkbox w-4 h-4 rounded">
+            <span>Povestit și lăsăm tot greul zilei în urmă 💬</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer select-none">
+            <input type="checkbox" checked class="custom-checkbox w-4 h-4 rounded">
+            <span>Serial împreună, la distanță 🎬🍿</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Interactive Piano Chords Section -->
+      <section class="my-6 text-center">
+        <p class="text-[11px] uppercase tracking-[0.2em] text-rose-700/80 font-semibold mb-1">Un acord pentru clipele tale de liniște</p>
+        <p class="text-xs text-stone-500 mb-3.5 font-light">Atinge clapele pentru un strop de armonie:</p>
+        
+        <div class="grid grid-cols-3 gap-2 sm:gap-3.5" id="piano-cluster">
+          <!-- Key 1 -->
+          <button onclick="playWarmChord([261.63, 329.63, 392.00], this, '♪')" class="piano-chord-btn border border-rose-200/70 py-3 px-2 rounded-xl text-center shadow-sm">
+            <span class="block text-rose-800 text-[11px] font-cormorant italic font-medium">Do major</span>
+            <span class="block text-stone-800 text-xs sm:text-sm font-semibold tracking-wide mt-0.5">„Liniște”</span>
+          </button>
+          
+          <!-- Key 2 -->
+          <button onclick="playWarmChord([329.63, 392.00, 493.88], this, '♫')" class="piano-chord-btn border border-rose-200/70 py-3 px-2 rounded-xl text-center shadow-sm">
+            <span class="block text-rose-800 text-[11px] font-cormorant italic font-medium">Mi minor</span>
+            <span class="block text-stone-800 text-xs sm:text-sm font-semibold tracking-wide mt-0.5">„Aproape”</span>
+          </button>
+          
+          <!-- Key 3 -->
+          <button onclick="playWarmChord([349.23, 440.00, 523.25], this, '🌸')" class="piano-chord-btn border border-rose-200/70 py-3 px-2 rounded-xl text-center shadow-sm">
+            <span class="block text-rose-800 text-[11px] font-cormorant italic font-medium">Fa major 7</span>
+            <span class="block text-stone-800 text-xs sm:text-sm font-semibold tracking-wide mt-0.5">„Te iubesc”</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Remote Hug Interaction -->
+      <footer class="pt-5 border-t border-rose-100 flex flex-col items-center">
+        <button id="hug-btn" onclick="sendWarmHug(event)" class="relative overflow-hidden group w-full sm:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-[#d97585] via-[#be4e62] to-[#ab3e52] text-white font-medium text-xs sm:text-sm tracking-wide shadow-md shadow-rose-900/15 hover:shadow-rose-500/25 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0">
+          <span class="relative z-10 flex items-center justify-center gap-2">
+            <span>Trimite o îmbrățișare strânsă de la distanță</span>
+            <svg class="w-4 h-4 fill-current text-rose-100" viewBox="0 0 24 24">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Feedback Confirmation -->
+        <div id="hug-message" class="hidden mt-4 text-center">
+          <p class="font-cormorant text-xl text-rose-900 italic font-semibold">„Abia aștept să te strâng în brațe cu totul. Odihnește-te frumos deseară!”</p>
+          <p class="text-xs text-stone-500 mt-1">Ești totul pentru mine. Vorbim imediat la telefon!</p>
+        </div>
+      </footer>
+
+    </article>
+  </main>
+
+  <script>
+    // Audio Context state
+    let audioContextInstance = null;
+
+    function getAudioContext() {
+      if (!audioContextInstance) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        audioContextInstance = new AudioCtx();
+      }
+      if (audioContextInstance.state === 'suspended') {
+        audioContextInstance.resume();
+      }
+      return audioContextInstance;
+    }
+
+    // Warm Rhodes / Piano Chord Synthesizer using Web Audio API
+    function playWarmChord(frequencies, element, glyph) {
+      try {
+        const ctx = getAudioContext();
+        const now = ctx.currentTime;
+
+        frequencies.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+
+          // Smooth mix of sine and triangle for acoustic softness
+          osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+          osc.frequency.setValueAtTime(freq, now);
+
+          // Envelope: Quick soft attack, natural exponential release
+          gain.gain.setValueAtTime(0.0001, now);
+          gain.gain.exponentialRampToValueAtTime(0.18 / frequencies.length, now + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.3);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc.start(now);
+          osc.stop(now + 2.4);
+        });
+
+        // Spawn delicate floating note / symbol
+        spawnParticle(element, glyph);
+      } catch (err) {
+        console.error('Audio initialization error:', err);
+      }
+    }
+
+    // Floating note / symbol effect
+    function spawnParticle(targetEl, glyph) {
+      const rect = targetEl.getBoundingClientRect();
+      const p = document.createElement('div');
+      p.className = 'floating-particle';
+      p.textContent = glyph || '♩';
+
+      const offset = (Math.random() - 0.5) * 28;
+      p.style.left = `${rect.left + rect.width / 2 + offset}px`;
+      p.style.top = `${rect.top}px`;
+
+      document.body.appendChild(p);
+
+      setTimeout(() => {
+        p.remove();
+      }, 2200);
+    }
+
+    // Open sealed envelope
+    function openLetter() {
+      getAudioContext();
+
+      const sealed = document.getElementById('sealed-screen');
+      const letter = document.getElementById('letter-content');
+
+      // Soft welcoming chime
+      playWarmChord([392.00, 523.25, 659.25], sealed, '✨');
+
+      sealed.style.transform = 'scale(0.97)';
+      sealed.style.opacity = '0';
+
+      setTimeout(() => {
+        sealed.classList.add('hidden');
+        letter.classList.remove('hidden');
+
+        requestAnimationFrame(() => {
+          letter.style.opacity = '1';
+        });
+      }, 350);
+    }
+
+    // Send hug interaction
+    function sendWarmHug(event) {
+      const msg = document.getElementById('hug-message');
+      msg.classList.remove('hidden');
+
+      // Play warm resolution chord
+      playWarmChord([261.63, 329.63, 392.00, 523.25], event.currentTarget, '🤍');
+
+      const icons = ['🌸', '✨', '💛', '🤍', '♪'];
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+          const chosen = icons[Math.floor(Math.random() * icons.length)];
+          spawnParticle(event.currentTarget, chosen);
+        }, i * 100);
+      }
+
+      event.currentTarget.classList.add('pointer-events-none');
+      event.currentTarget.style.opacity = '0.82';
+    }
+  </script>
+</body>
+</html>
